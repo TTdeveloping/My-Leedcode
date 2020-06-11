@@ -4,37 +4,31 @@
 
 using namespace std;
 
-class Solution 
-{
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
 public:
-	vector<vector<int>> zigzagLevelOrder(TreeNode* root)
-	{
-		vector<vector<int>> res;
-		queue<TreeNode *> q;
-		if (root == NULL) return res;
+	vector<int> preorderTraversal(TreeNode* root) {
+		vector<int> node_val;
+		queue<TreeNode*> q;
+		if (root == NULL) retrun node_val;
 		q.push(root);
-		int levl = 1;
 		while (!q.empty())
 		{
-			int tep_size = q.size();
-			vector<int> temp;
-			for (int i = 1; i <= tep_size; i++)
+			int len = q.size();
+			for (int i = 1; i <= len; i++)
 			{
 				TreeNode *p = q.front();
-				q.pop();
-				temp.push_back(p->val);
-				if (p->left != NULL) q.push(p->left);
-				if (p->right != NULL) q.push(p->right);
-				
+				node_val.push_back(p->val)
 			}
-			if (levl % 2 == 0)
-			{
-				reverse(temp.begin(), temp.end());
-			}
-			res.push_back(temp);
-			levl++;
-
 		}
-		return res;
+
 	}
 };
